@@ -26,14 +26,11 @@ def main() -> None:
 	Make CLI friendly by parsing input directly through sys.argv
 	Allow file input also through sys.argv
 	"""
-	#expression = cli.init()
-	#print(expression)
-	expression = "T -> F."
+	expression = cli.init()
 	tokens = get(expression)
 	lexer = Lexer()
 	lexer.lex = next(tokens)  # Store the first token without passing generator into __init__
 	valid = lexer.B(tokens)
-	print(lexer.stack)
 	if valid:
 		print("Result:", lexer.stack.pop())
 	else:
