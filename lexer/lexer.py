@@ -10,24 +10,21 @@ class Lexer(object):
 
 	Attributes
 	----------
-	expression : str
-		Expression to be checked for syntatic correctness and evaluated
-	stack : list
+	stack : List[bool]
 		Stack used for evaluation of valid expressions.
 		The end of the list is the top of the stack.
-	result : bool
-		Result of the expression, if the expression is valid
+	lex : str
+		Current token being recursively verified in the instance.
 
 	Notes
 	------
 	Recursive calls of instance methods do not need stack or lex to be 
 	passed as they are accessed as instance attributes. 
 	"""
-	def __init__(self, expression: str):
-		self.expression = expression
+	def __init__(self):
 		self.stack = []
-		self.result = None
-		
+		self.lex = None
+	
 
 	def B(self, get: Generator[str, None, str]) -> bool:
 		lex = next(get)
