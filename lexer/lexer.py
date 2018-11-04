@@ -140,7 +140,7 @@ class Lexer(object):
 						# Evaluate implication and add to stack
 						rhs = self.stack.pop()
 						lhs = self.stack.pop()
-						implication = ((not lhs) or (rhs)) # By truth table
+						implication = ((not lhs) or (rhs))  # By truth table
 						self.stack.append(implication)
 						self.logger.info(f"[IT_TAIL] is returning True. Lex is {self.lex}")		
 						return True

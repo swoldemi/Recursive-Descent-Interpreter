@@ -31,7 +31,7 @@ def main() -> None:
 	expression = "T -> F."
 	tokens = get(expression)
 	lexer = Lexer()
-	lexer.lex = next(tokens) # Store the first token without passing generator into __init__
+	lexer.lex = next(tokens)  # Store the first token without passing generator into __init__
 	valid = lexer.B(tokens)
 	print(lexer.stack)
 	if valid:

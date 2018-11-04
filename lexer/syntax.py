@@ -22,7 +22,7 @@ class Syntax(object):
 	This requires Python 3.7+
 	"""
 	if is_python37:
-		Intersection = Union # Remap for simplicity since typing.Intersection still doesn't exist
+		Intersection = Union  # Remap for simplicity since typing.Intersection still doesn't exist
 		EpsilonEmpty = TypeVar("EpsilonEmpty", str, None)
 		
 		Atom = TypeVar("Atom", bool, str)
