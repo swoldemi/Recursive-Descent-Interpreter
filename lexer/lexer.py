@@ -140,7 +140,7 @@ class Lexer(object):
 						self.logger.info(f"[IT_TAIL] is returning True. Lex is {self.lex}")		
 						return True
 		self.logger.info(f"[IT_TAIL] is returning False. Lex is {self.lex}")		
-		return False
+		return True
 
 
 	def IT(self, get: Generator[str, None, str]) -> bool:
