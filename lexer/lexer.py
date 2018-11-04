@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import sys
 
 from typing import Generator
 
@@ -54,8 +53,8 @@ class Lexer(object):
 			self.logger.info(f"[A] is returning False. Lex is {self.lex}.")
 			return False
 		except StopIteration:
-			sys.stdout.write("[x] SyntaxError. Expression must end with a period.")
-			sys.exit(0)
+			raise ExpressionError("SyntaxError. Expression must end with a period.")
+
 
 	
 	def L(self, get: Generator[str, None, str]) -> bool:
@@ -103,7 +102,6 @@ class Lexer(object):
 		return False
 	
 
-	
 	def OT_TAIL(self, get: Generator[str, None, str]) -> bool:
 		self.logger.debug("Inside of [OT_TAIL].")
 		if self.lex == "v":
@@ -168,3 +166,7 @@ class Lexer(object):
 				return True
 		self.logger.info(f"[B] is returning False. Lex is {self.lex}")		
 		return False
+
+
+class ExpressionError(Exception):
+	pass
