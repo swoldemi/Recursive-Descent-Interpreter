@@ -8,7 +8,6 @@ test = "python -m unittest discover -v"
 start = "python main.py"
 
 [packages]
-logme = "*"
 
 [dev-packages]
 

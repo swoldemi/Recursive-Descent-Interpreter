@@ -22,7 +22,6 @@ def get(expression: str) -> Generator[str, None, str]:
 	the patterns disscussed during class.
 	"""
 	for token in expression:
-		print(f"TOKEN IS '{token}'")
 		if token == " ":
 			continue
 		yield token
