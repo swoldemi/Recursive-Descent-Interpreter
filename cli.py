@@ -6,6 +6,9 @@ import sys
 
 from typing import Union
 
+from lexer.lexer import ExpressionError
+
+
 header = """
   ____              _                    _____                              _             
  | __ )  ___   ___ | | ___  __ _ _ __   | ____|_  ___ __  _ __ ___  ___ ___(_) ___  _ __  
@@ -76,6 +79,9 @@ def init() -> Union[str, Exception]:
 		else:
 			# Read input from stdin
 			expression = input("[*] Please input your expression: ")
+			if not expression:
+				# Check empty
+				raise ExpressionError("InputError. Expression is empty.")
 	except Exception as e:
 		sys.stderr.write(f"[x] Unexpected error: {e}\r\n") 
 		raise
