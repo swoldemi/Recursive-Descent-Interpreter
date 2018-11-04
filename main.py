@@ -2,34 +2,10 @@
 
 """Main interpreter module which uses the Lexer class."""
 
-from typing import Generator
-
 import cli
 
 from lexer.lexer import Lexer
-
-
-def get(expression: str) -> Generator[str, None, str]:
-	"""Generator which will yeild the next token in an expression.
-	
-	Parameters
-	-----------
-	expression: str
-		The expression input from the user.
-	Returns
-	--------
-	Generator[YieldType=str, SendType=None, ReturnType=str]
-
-	Notes
-	-----
-	This is not an instance method of Lexer to match 
-	the patterns disscussed during class.
-	"""
-	for token in expression:
-		print(f"TOKEN IS '{token}'")
-		if token == " ":
-			continue
-		yield token
+from lexer.utils import get
 
 
 def main() -> None:
