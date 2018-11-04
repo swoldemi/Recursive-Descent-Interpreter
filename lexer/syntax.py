@@ -3,7 +3,7 @@
 from sys import version_info
 from typing import Any, Tuple, NewType, TypeVar, Union
 
-is_python37 = True if (version_info.major == 3) and (version_info.minor == 7) else False
+is_python37 = (version_info.major == 3) and (version_info.minor == 7)
 
 
 class Syntax(object):
