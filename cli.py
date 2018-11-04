@@ -21,7 +21,7 @@ header = """
   | || | | | ||  __/ |  | |_) | | |  __/ ||  __/ |                                        
  |___|_| |_|\__\___|_|  | .__/|_|  \___|\__\___|_|                                        
 \t\t\t|_|
-by Simon Woldemichael for Dr. Richard Watson's CS 3361 - Concepts of Programming Languages                                                      
+by Simon Woldemichael for Dr. Richard Watson's CS 3361 - Concepts of Program Language
 \r\n
 """
 

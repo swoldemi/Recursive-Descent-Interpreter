@@ -9,23 +9,7 @@ from lexer.utils import get
 
 
 def main() -> None:
-	"""Main interpreter routine.
-
-	Examples
-	-------
-	in: T -> F.
-	out: False
-	
-	in: (T v F) -> (F ^ T).
-	out: True
-	
-	in: (((T -> F) -> (T -> F)) ^ (F -> T)) -> F.
-	out: False
-
-	TODO:
-	Make CLI friendly by parsing input directly through sys.argv
-	Allow file input also through sys.argv
-	"""
+	"""Main interpreter routine."""
 	expression = cli.init()
 	tokens = get(expression)
 	lexer = Lexer()

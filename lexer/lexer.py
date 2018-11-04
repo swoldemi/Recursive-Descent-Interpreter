@@ -3,10 +3,7 @@
 
 from typing import Generator
 
-import logme
 
-
-@logme.log
 class Lexer(object):
 	"""Recursive descent functions required by the non-terminals
 	presented in the project specification.
@@ -52,7 +49,6 @@ class Lexer(object):
 			raise ExpressionError("SyntaxError. Expression must end with a period.")
 
 
-	
 	def L(self, get: Generator[str, None, str]) -> bool:
 		if self.A(get):
 			return True
