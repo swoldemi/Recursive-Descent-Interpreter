@@ -47,6 +47,7 @@ def init() -> Union[str, Exception]:
 	sys.stdout.write("[+] Your expression may only contain the following tokens: ->, (, ), v, ^, T, F, ~\r\n")
 	sys.stdout.write("[+] v (lowercase letter V) denotes a disjunction (logical-or).\r\n")
 	sys.stdout.write("[+] ^ (carat symbol) denotes a conjunction (logical-and).\r\n")
+	sys.stdout.write("[+] -> (hypen followed by greater-than symbol) denotes an implication and cannot be broken by whitespace.\r\n")
 	sys.stdout.write("[+] Your expression must end with a period.\r\n")
 	sys.stdout.write("\r\n")
 	
