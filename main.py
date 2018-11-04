@@ -26,6 +26,7 @@ def get(expression: str) -> Generator[str, None, str]:
 	the patterns disscussed during class.
 	"""
 	for token in expression:
+		print(f"TOKEN IS '{token}'")
 		if token == " ":
 			continue
 		yield token
@@ -34,7 +35,7 @@ def get(expression: str) -> Generator[str, None, str]:
 def main() -> None:
 	"""Main interpreter routine.
 
-	Example
+	Examples
 	-------
 	in: T -> F.
 	out: False
@@ -42,23 +43,26 @@ def main() -> None:
 	in: (T v F) -> (F ^ T).
 	out: True
 	
-	in: (((T -> F) -> (T -> F)) ^ (F -> T)) -> F
-	out: 
+	in: (((T -> F) -> (T -> F)) ^ (F -> T)) -> F.
+	out: False
+
 	TODO:
 	Make CLI friendly by parsing input directly through sys.argv
 	Allow file input also through sys.argv
 	"""
 	#expression = cli.init()
 	#print(expression)
-	expression = "T -> F"
-	lex = Lexer(expression)
-	valid = lex.B(get(expression))
-	print(get)
+	expression = "T -> F."
+	tokens = get(expression)
+	lexer = Lexer()
+	lexer.lex = next(tokens) # Store the first token without passing generator into __init__
+	valid = lexer.B(tokens)
+	print(lexer.stack)
 	if valid:
-		print(lex.result)
+		print("Result:", lexer.stack.pop())
 	else:
 		print("Invalid expression.")
-	
+
 
 if __name__ == "__main__":
 	main()
