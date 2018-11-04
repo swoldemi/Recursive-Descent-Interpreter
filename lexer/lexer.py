@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
 
+import sys
+
 from typing import Generator
 
 import logme
+
 
 @logme.log
 class Lexer(object):
@@ -30,25 +33,29 @@ class Lexer(object):
 
 	def A(self, get: Generator[str, None, str]) -> bool:
 		self.logger.info(f"Inside of [A]. Lex is {self.lex}")
-		if self.lex == "T":
-			self.logger.info("[A] adding True to stack.")
-			self.stack.append(True)
-			self.lex = next(get)
-			return True
-		elif self.lex == "F":
-			self.logger.info("[A] adding False to stack.")
-			self.stack.append(False)
-			self.lex = next(get)
-			return True
-		elif self.lex == "(":
-			# Parenthesis matching
-			self.lex = next(get)
-			if self.IT(get):
-				if self.lex == ")":
-					self.lex = next(get)
-					return True
-		self.logger.info(f"[A] is returning False. Lex is {self.lex}.")
-		return False
+		try:
+			if self.lex == "T":
+				self.logger.info("[A] adding True to stack.")
+				self.stack.append(True)
+				self.lex = next(get)
+				return True
+			elif self.lex == "F":
+				self.logger.info("[A] adding False to stack.")
+				self.stack.append(False)
+				self.lex = next(get)
+				return True
+			elif self.lex == "(":
+				# Parenthesis matching
+				self.lex = next(get)
+				if self.IT(get):
+					if self.lex == ")":
+						self.lex = next(get)
+						return True
+			self.logger.info(f"[A] is returning False. Lex is {self.lex}.")
+			return False
+		except StopIteration:
+			sys.stdout.write("[x] SyntaxError. Expression must end with a period.")
+			sys.exit(0)
 
 	
 	def L(self, get: Generator[str, None, str]) -> bool:
@@ -105,8 +112,8 @@ class Lexer(object):
 				# Perform OR operation and add to stack
 				q = self.stack.pop()
 				p = self.stack.pop()
-				self.stack.append(p and q)
-				if OT_TAIL(get):
+				self.stack.append(p or q)
+				if self.OT_TAIL(get):
 					self.logger.info(f"[OT_TAIL] is returning True[0]. Lex is {self.lex}")		
 					return True
 		self.logger.info(f"[OT_TAIL] is returning True[1]. Lex is {self.lex}")		
@@ -139,7 +146,7 @@ class Lexer(object):
 						self.stack.append(implication)
 						self.logger.info(f"[IT_TAIL] is returning True. Lex is {self.lex}")		
 						return True
-		self.logger.info(f"[IT_TAIL] is returning False. Lex is {self.lex}")		
+		self.logger.info(f"[IT_TAIL] is returning True. Lex is {self.lex}")		
 		return True
 
 
